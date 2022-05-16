@@ -1,0 +1,23 @@
+{
+    "namespace": "com.whipitupitude.market",
+    "type": "record",
+    "name": "TradeData",
+    "fields": [
+        {
+            "name": "symbol",
+            "type": "string"
+        },
+        {
+            "name": "price",
+            "type": "double"
+        },
+        {
+            "name": "buySell",
+            "type": "string"
+        },
+        {
+            "name": "quantity",
+            "type": "int"
+        }
+    ]
+}
