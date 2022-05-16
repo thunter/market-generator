@@ -24,7 +24,7 @@ Avro schema are in src/main/resource/schema. To generate .java files a maven plu
 
 ```
 mvn generate-sources
-``
+```
 
 ## Viewing Avro messages
 
