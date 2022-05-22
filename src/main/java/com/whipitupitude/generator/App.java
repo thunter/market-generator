@@ -1,11 +1,7 @@
 package com.whipitupitude.generator;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -15,14 +11,16 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import com.whipitupitude.market.TradeData;
 
 public class App {
-    private static final Logger logger = LogManager.getLogger();
+
     private static final String kafkaConfig = "kafka.properties";
     private static final String topicName = "trades";
 
     public static void main(String[] args) {
-        Market m = new Market(5);
+        org.apache.logging.log4j.Logger logger = org.apache.logging.log4j.LogManager.getLogger(App.class);
 
-        logger.info("Hello Students of Kafka");
+        Market m = new Market(5, 1);
+
+        logger.warn("Hello Students of Kafka");
 
         logger.trace("Creating kafka config");
         Properties properties = new Properties();
@@ -42,24 +40,27 @@ public class App {
 
         KafkaProducer<String, Object> producer = new KafkaProducer<>(properties);
 
-        for (int i = 0; i <= 10; i++) {
+        // for (int i = 0; i <= 10; i++) {
+        while (true) {
+
             Trade t = m.getEvent();
 
             TradeData td = new TradeData(t.symbol(), t.price(), t.buySell(), t.quantity());
             logger.info("Avro Record");
-            logger.info(td);
+            System.out.println(td);
             ProducerRecord<String, Object> record = new ProducerRecord<>(topicName, t.symbol(), td);
             producer.send(record);
         }
-        producer.flush();
-        producer.close();
+        // producer.flush();
+        // producer.close();
 
-        System.out.println("Hello!");
+        // System.out.println("Hello!");
+
     }
 
     // simple test method
     public static void mainTest(String[] args) {
-        Market m = new Market(5);
+        Market m = new Market(5, 1);
 
         System.out.println(m);
         System.out.println(m.marketStocksNames());

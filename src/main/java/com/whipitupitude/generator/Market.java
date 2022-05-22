@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.google.common.util.concurrent.RateLimiter;
+
 import umontreal.ssj.randvar.NormalGen;
 import umontreal.ssj.rng.MRG32k3a;
 
@@ -12,7 +14,9 @@ public class Market {
     public List<Stock> stocks = new ArrayList<Stock>(); // list of stocks in the market
     Random rand = new Random();
 
-    public Market(int size) {
+    private RateLimiter rl;
+
+    public Market(int size, double rateLimit) {
         // Lets make it random!
         // This just picks an arbitary seed for the random number generator
         Random rand = new Random();
@@ -28,9 +32,12 @@ public class Market {
         for (int i = 0; i <= size - 1; i++) {
             stocks.add(new Stock(stream, muNormal, sigmaNormal));
         }
+
+        rl = RateLimiter.create(rateLimit);
     }
 
     public Trade getEvent() {
+        rl.acquire(1);
         return stocks.get(rand.nextInt(size)).getTrade();
     }
 
