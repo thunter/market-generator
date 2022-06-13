@@ -58,9 +58,20 @@ public class Stock {
         }
         lastPrice = price;
 
-        int quantity = rand.nextInt(1, 100000);
+        int quantity = rand.nextInt(1, 1000);
 
         return new Trade(symbol, price, buySell, quantity);
+    }
+
+    public Position getInitialPosition() {
+
+        double lastTradePrice = bSeq.getCurrentObservation();
+        lastTradePrice = (double) Math.round(lastTradePrice * 10000d) / 10000d;
+
+        int position = rand.nextInt(1, 10000);
+
+        long lastTradeTime = System.currentTimeMillis(); // default to now
+        return new Position(symbol, lastTradePrice, position, lastTradeTime);
     }
 
 }

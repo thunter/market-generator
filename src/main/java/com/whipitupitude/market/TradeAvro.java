@@ -13,26 +13,26 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
-public class TradeData extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -131904189383028564L;
+public class TradeAvro extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = -8088711620194782393L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TradeData\",\"namespace\":\"com.whipitupitude.market\",\"fields\":[{\"name\":\"symbol\",\"type\":\"string\"},{\"name\":\"price\",\"type\":\"double\"},{\"name\":\"buySell\",\"type\":\"string\"},{\"name\":\"quantity\",\"type\":\"int\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TradeAvro\",\"namespace\":\"com.whipitupitude.market\",\"fields\":[{\"name\":\"symbol\",\"type\":\"string\"},{\"name\":\"price\",\"type\":\"double\"},{\"name\":\"buySell\",\"type\":\"string\"},{\"name\":\"quantity\",\"type\":\"int\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<TradeData> ENCODER =
-      new BinaryMessageEncoder<TradeData>(MODEL$, SCHEMA$);
+  private static final BinaryMessageEncoder<TradeAvro> ENCODER =
+      new BinaryMessageEncoder<TradeAvro>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<TradeData> DECODER =
-      new BinaryMessageDecoder<TradeData>(MODEL$, SCHEMA$);
+  private static final BinaryMessageDecoder<TradeAvro> DECODER =
+      new BinaryMessageDecoder<TradeAvro>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
    * @return the message encoder used by this class
    */
-  public static BinaryMessageEncoder<TradeData> getEncoder() {
+  public static BinaryMessageEncoder<TradeAvro> getEncoder() {
     return ENCODER;
   }
 
@@ -40,7 +40,7 @@ public class TradeData extends org.apache.avro.specific.SpecificRecordBase imple
    * Return the BinaryMessageDecoder instance used by this class.
    * @return the message decoder used by this class
    */
-  public static BinaryMessageDecoder<TradeData> getDecoder() {
+  public static BinaryMessageDecoder<TradeAvro> getDecoder() {
     return DECODER;
   }
 
@@ -49,12 +49,12 @@ public class TradeData extends org.apache.avro.specific.SpecificRecordBase imple
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
-  public static BinaryMessageDecoder<TradeData> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<TradeData>(MODEL$, SCHEMA$, resolver);
+  public static BinaryMessageDecoder<TradeAvro> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<TradeAvro>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
-   * Serializes this TradeData to a ByteBuffer.
+   * Serializes this TradeAvro to a ByteBuffer.
    * @return a buffer holding the serialized data for this instance
    * @throws java.io.IOException if this instance could not be serialized
    */
@@ -63,12 +63,12 @@ public class TradeData extends org.apache.avro.specific.SpecificRecordBase imple
   }
 
   /**
-   * Deserializes a TradeData from a ByteBuffer.
+   * Deserializes a TradeAvro from a ByteBuffer.
    * @param b a byte buffer holding serialized data for an instance of this class
-   * @return a TradeData instance decoded from the given buffer
+   * @return a TradeAvro instance decoded from the given buffer
    * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
    */
-  public static TradeData fromByteBuffer(
+  public static TradeAvro fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
@@ -83,7 +83,7 @@ public class TradeData extends org.apache.avro.specific.SpecificRecordBase imple
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public TradeData() {}
+  public TradeAvro() {}
 
   /**
    * All-args constructor.
@@ -92,7 +92,7 @@ public class TradeData extends org.apache.avro.specific.SpecificRecordBase imple
    * @param buySell The new value for buySell
    * @param quantity The new value for quantity
    */
-  public TradeData(java.lang.CharSequence symbol, java.lang.Double price, java.lang.CharSequence buySell, java.lang.Integer quantity) {
+  public TradeAvro(java.lang.CharSequence symbol, java.lang.Double price, java.lang.CharSequence buySell, java.lang.Integer quantity) {
     this.symbol = symbol;
     this.price = price;
     this.buySell = buySell;
@@ -193,45 +193,45 @@ public class TradeData extends org.apache.avro.specific.SpecificRecordBase imple
   }
 
   /**
-   * Creates a new TradeData RecordBuilder.
-   * @return A new TradeData RecordBuilder
+   * Creates a new TradeAvro RecordBuilder.
+   * @return A new TradeAvro RecordBuilder
    */
-  public static com.whipitupitude.market.TradeData.Builder newBuilder() {
-    return new com.whipitupitude.market.TradeData.Builder();
+  public static com.whipitupitude.market.TradeAvro.Builder newBuilder() {
+    return new com.whipitupitude.market.TradeAvro.Builder();
   }
 
   /**
-   * Creates a new TradeData RecordBuilder by copying an existing Builder.
+   * Creates a new TradeAvro RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new TradeData RecordBuilder
+   * @return A new TradeAvro RecordBuilder
    */
-  public static com.whipitupitude.market.TradeData.Builder newBuilder(com.whipitupitude.market.TradeData.Builder other) {
+  public static com.whipitupitude.market.TradeAvro.Builder newBuilder(com.whipitupitude.market.TradeAvro.Builder other) {
     if (other == null) {
-      return new com.whipitupitude.market.TradeData.Builder();
+      return new com.whipitupitude.market.TradeAvro.Builder();
     } else {
-      return new com.whipitupitude.market.TradeData.Builder(other);
+      return new com.whipitupitude.market.TradeAvro.Builder(other);
     }
   }
 
   /**
-   * Creates a new TradeData RecordBuilder by copying an existing TradeData instance.
+   * Creates a new TradeAvro RecordBuilder by copying an existing TradeAvro instance.
    * @param other The existing instance to copy.
-   * @return A new TradeData RecordBuilder
+   * @return A new TradeAvro RecordBuilder
    */
-  public static com.whipitupitude.market.TradeData.Builder newBuilder(com.whipitupitude.market.TradeData other) {
+  public static com.whipitupitude.market.TradeAvro.Builder newBuilder(com.whipitupitude.market.TradeAvro other) {
     if (other == null) {
-      return new com.whipitupitude.market.TradeData.Builder();
+      return new com.whipitupitude.market.TradeAvro.Builder();
     } else {
-      return new com.whipitupitude.market.TradeData.Builder(other);
+      return new com.whipitupitude.market.TradeAvro.Builder(other);
     }
   }
 
   /**
-   * RecordBuilder for TradeData instances.
+   * RecordBuilder for TradeAvro instances.
    */
   @org.apache.avro.specific.AvroGenerated
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<TradeData>
-    implements org.apache.avro.data.RecordBuilder<TradeData> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<TradeAvro>
+    implements org.apache.avro.data.RecordBuilder<TradeAvro> {
 
     private java.lang.CharSequence symbol;
     private double price;
@@ -247,7 +247,7 @@ public class TradeData extends org.apache.avro.specific.SpecificRecordBase imple
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.whipitupitude.market.TradeData.Builder other) {
+    private Builder(com.whipitupitude.market.TradeAvro.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.symbol)) {
         this.symbol = data().deepCopy(fields()[0].schema(), other.symbol);
@@ -268,10 +268,10 @@ public class TradeData extends org.apache.avro.specific.SpecificRecordBase imple
     }
 
     /**
-     * Creates a Builder by copying an existing TradeData instance
+     * Creates a Builder by copying an existing TradeAvro instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.whipitupitude.market.TradeData other) {
+    private Builder(com.whipitupitude.market.TradeAvro other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.symbol)) {
         this.symbol = data().deepCopy(fields()[0].schema(), other.symbol);
@@ -305,7 +305,7 @@ public class TradeData extends org.apache.avro.specific.SpecificRecordBase imple
       * @param value The value of 'symbol'.
       * @return This builder.
       */
-    public com.whipitupitude.market.TradeData.Builder setSymbol(java.lang.CharSequence value) {
+    public com.whipitupitude.market.TradeAvro.Builder setSymbol(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.symbol = value;
       fieldSetFlags()[0] = true;
@@ -325,7 +325,7 @@ public class TradeData extends org.apache.avro.specific.SpecificRecordBase imple
       * Clears the value of the 'symbol' field.
       * @return This builder.
       */
-    public com.whipitupitude.market.TradeData.Builder clearSymbol() {
+    public com.whipitupitude.market.TradeAvro.Builder clearSymbol() {
       symbol = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -345,7 +345,7 @@ public class TradeData extends org.apache.avro.specific.SpecificRecordBase imple
       * @param value The value of 'price'.
       * @return This builder.
       */
-    public com.whipitupitude.market.TradeData.Builder setPrice(double value) {
+    public com.whipitupitude.market.TradeAvro.Builder setPrice(double value) {
       validate(fields()[1], value);
       this.price = value;
       fieldSetFlags()[1] = true;
@@ -365,7 +365,7 @@ public class TradeData extends org.apache.avro.specific.SpecificRecordBase imple
       * Clears the value of the 'price' field.
       * @return This builder.
       */
-    public com.whipitupitude.market.TradeData.Builder clearPrice() {
+    public com.whipitupitude.market.TradeAvro.Builder clearPrice() {
       fieldSetFlags()[1] = false;
       return this;
     }
@@ -384,7 +384,7 @@ public class TradeData extends org.apache.avro.specific.SpecificRecordBase imple
       * @param value The value of 'buySell'.
       * @return This builder.
       */
-    public com.whipitupitude.market.TradeData.Builder setBuySell(java.lang.CharSequence value) {
+    public com.whipitupitude.market.TradeAvro.Builder setBuySell(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.buySell = value;
       fieldSetFlags()[2] = true;
@@ -404,7 +404,7 @@ public class TradeData extends org.apache.avro.specific.SpecificRecordBase imple
       * Clears the value of the 'buySell' field.
       * @return This builder.
       */
-    public com.whipitupitude.market.TradeData.Builder clearBuySell() {
+    public com.whipitupitude.market.TradeAvro.Builder clearBuySell() {
       buySell = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -424,7 +424,7 @@ public class TradeData extends org.apache.avro.specific.SpecificRecordBase imple
       * @param value The value of 'quantity'.
       * @return This builder.
       */
-    public com.whipitupitude.market.TradeData.Builder setQuantity(int value) {
+    public com.whipitupitude.market.TradeAvro.Builder setQuantity(int value) {
       validate(fields()[3], value);
       this.quantity = value;
       fieldSetFlags()[3] = true;
@@ -444,16 +444,16 @@ public class TradeData extends org.apache.avro.specific.SpecificRecordBase imple
       * Clears the value of the 'quantity' field.
       * @return This builder.
       */
-    public com.whipitupitude.market.TradeData.Builder clearQuantity() {
+    public com.whipitupitude.market.TradeAvro.Builder clearQuantity() {
       fieldSetFlags()[3] = false;
       return this;
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public TradeData build() {
+    public TradeAvro build() {
       try {
-        TradeData record = new TradeData();
+        TradeAvro record = new TradeAvro();
         record.symbol = fieldSetFlags()[0] ? this.symbol : (java.lang.CharSequence) defaultValue(fields()[0]);
         record.price = fieldSetFlags()[1] ? this.price : (java.lang.Double) defaultValue(fields()[1]);
         record.buySell = fieldSetFlags()[2] ? this.buySell : (java.lang.CharSequence) defaultValue(fields()[2]);
@@ -468,8 +468,8 @@ public class TradeData extends org.apache.avro.specific.SpecificRecordBase imple
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<TradeData>
-    WRITER$ = (org.apache.avro.io.DatumWriter<TradeData>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<TradeAvro>
+    WRITER$ = (org.apache.avro.io.DatumWriter<TradeAvro>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -477,8 +477,8 @@ public class TradeData extends org.apache.avro.specific.SpecificRecordBase imple
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<TradeData>
-    READER$ = (org.apache.avro.io.DatumReader<TradeData>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<TradeAvro>
+    READER$ = (org.apache.avro.io.DatumReader<TradeAvro>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {

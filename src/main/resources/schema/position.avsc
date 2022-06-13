@@ -1,23 +1,24 @@
 {
     "namespace": "com.whipitupitude.market",
     "type": "record",
-    "name": "TradeAvro",
+    "name": "PositionAvro",
     "fields": [
         {
             "name": "symbol",
             "type": "string"
         },
         {
-            "name": "price",
+            "name": "lastTradePrice",
             "type": "double"
         },
         {
-            "name": "buySell",
-            "type": "string"
+            "name": "position",
+            "type": "int"
         },
         {
-            "name": "quantity",
-            "type": "int"
+            "name": "lastTradeTime",
+            "type": "long",
+            "logicalType": "timestamp-mills"
         }
     ]
 }

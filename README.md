@@ -37,5 +37,5 @@ docker exec -it <container id> /bin/bash
 and run:
 
 ```sh
-kafka-avro-console-consumer --topic trades --property schema.registry.url=http://localhost:8081   --bootstrap-server broker:29092   --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer   --property print.key=true   --property key.separator="-"   --from-beginning
+kafka-avro-console-consumer --topic trades --property schema.registry.url=http://localhost:8081   --bootstrap-server localhost:9092   --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer   --property print.key=true   --property key.separator="-" --from-beginning
 ```
