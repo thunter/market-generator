@@ -6,12 +6,16 @@ Goal is to generate 'interesting' messages for pushing to a kafka system for fur
 
 ## TODO
 
+* How do you do Avro between different packages via schema registry?
+* More filtering and build out the streams
+
+* :white_check_mark: Add MSK IAM Support
 * :white_check_mark: kafka support.  
 * :white_check_mark: Avro messages.
-* fix the properties loading.
-* paramertise it a bit better.
-* enable a while(1) loop
-* rate limit message production
+* :white_check_mark:fix the properties loading.
+* :white_check_mark:paramertise it a bit better.
+* :white_check_mark:enable a while(1) loop
+* :white_check_mark:rate limit message production
  
 
 # Kafka
@@ -38,4 +42,22 @@ and run:
 
 ```sh
 kafka-avro-console-consumer --topic trades --property schema.registry.url=http://localhost:8081   --bootstrap-server localhost:9092   --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer   --property print.key=true   --property key.separator="-" --from-beginning
+```
+
+## Schema registy
+
+Integration with 
+
+To start: ` schema-registry-start ~/git/market-generator/schema-registry.properties`
+
+Properties file
+
+```ini
+kafkastore.bootstrap.servers=SASL_SSL://boot-xxxxxxxx.c1.kafka-serverless.ap-southeast-2.amazonaws.com:9098
+host.name=localhost
+
+kafkastore.security.protocol=SASL_SSL
+kafkastore.sasl.mechanism=AWS_MSK_IAM
+kafkastore.sasl.jaas.config=software.amazon.msk.auth.iam.IAMLoginModule required;
+kafkastore.sasl.client.callback.handler.class=software.amazon.msk.auth.iam.IAMClientCallbackHandler
 ```
