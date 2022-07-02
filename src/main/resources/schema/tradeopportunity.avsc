@@ -1,0 +1,27 @@
+{
+    "namespace": "com.whipitupitude.market",
+    "type": "record",
+    "name": "TradeOpportunityAvro",
+    "fields": [
+        {
+            "name": "symbol",
+            "type": "string"
+        },
+        {
+            "name": "positionPrice",
+            "type": "double"
+        },
+        {
+            "name": "tradePrice",
+            "type": "double"
+        },
+        {
+            "name": "buySell",
+            "type": "string"
+        },
+        {
+            "name": "positionQuantity",
+            "type": "int"
+        }
+    ]
+}
