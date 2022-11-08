@@ -19,11 +19,22 @@ EOF
 
 kafka-topics --bootstrap-server $BOOTSTRAP --command-config $PROPERTIES_FILE --create --topic trades --partitions 6 --replication-factor 3
 kafka-topics --bootstrap-server $BOOTSTRAP --command-config $PROPERTIES_FILE --create --topic positions --partitions 6 --replication-factor 3
-
-rm $PROPERTIES_FILE
-
-kafka-topics --describe --bootstrap-server $BOOTSTRAP --topic trades
-kafka-topics --describe --bootstrap-server $BOOTSTRAP --topic positions
-
 kafka-topics --bootstrap-server $BOOTSTRAP --command-config $PROPERTIES_FILE --create --topic trades.stream.buy  --partitions 6 --replication-factor 3
 kafka-topics --bootstrap-server $BOOTSTRAP --command-config $PROPERTIES_FILE --create --topic trades.stream.sell  --partitions 6 --replication-factor 3
+
+kafka-topics --bootstrap-server $BOOTSTRAP --command-config $PROPERTIES_FILE --create --topic trades.stream.opportunities --partitions 6 --replication-factor 3
+kafka-topics --bootstrap-server $BOOTSTRAP --command-config $PROPERTIES_FILE --create --topic prices --partitions 6 --replication-factor 3
+
+
+# kafka-topics --bootstrap-server $BOOTSTRAP --command-config $PROPERTIES_FILE --describe --topic trades
+# kafka-topics --bootstrap-server $BOOTSTRAP --command-config $PROPERTIES_FILE --describe --topic positions
+# kafka-topics --bootstrap-server $BOOTSTRAP --command-config $PROPERTIES_FILE --describe --topic trades.stream.buy
+# kafka-topics --bootstrap-server $BOOTSTRAP --command-config $PROPERTIES_FILE --describe --topic trades.stream.sell
+
+# kafka-topics --bootstrap-server $BOOTSTRAP --command-config $PROPERTIES_FILE --create --topic  streams-dsl-KSTREAM-TOTABLE-0000000008-repartition --partitions 6 --replication-factor 3
+
+
+kafka-topics --bootstrap-server $BOOTSTRAP --command-config $PROPERTIES_FILE --describe --topic prices
+
+
+rm $PROPERTIES_FILE

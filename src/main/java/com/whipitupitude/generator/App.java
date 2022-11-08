@@ -38,8 +38,7 @@ public class App implements Callable<Integer> {
     @Option(names = { "-p" }, description = "Disable position generation", defaultValue = "true")
     private boolean generatePositions;
 
-    @Option(names = { "-P",
-            "--position-topic" }, description = "Topic to write market positions to", defaultValue = "positions")
+    @Option(names = { "-P", "--position-topic" }, description = "Topic to write market positions to", defaultValue = "positions")
     private String positionTopicName;
 
     @Option(names = "-D", mapFallbackValue = "") // allow -Dkey
@@ -53,11 +52,13 @@ public class App implements Callable<Integer> {
 
         Market m = new Market(size, rate);
 
-        logger.info("Size cli: ", size);
-
         logger.warn("Hello Students of Kafka");
-
         logger.trace("Creating kafka config");
+
+        // 
+        // Create properties object
+        //
+
         Properties properties = new Properties();
         try {
             if (!Files.exists(Paths.get(kafkaConfig))) {
@@ -73,21 +74,43 @@ public class App implements Callable<Integer> {
             throw new RuntimeException(e);
         }
 
+        //
+        // Create the producer with the configuration given by the configuration file
+        //
+
         KafkaProducer<String, Object> producer = new KafkaProducer<>(properties);
 
         if (generatePositions) {
             generateInitialMarketPositions(producer, m);
         }
 
-        // for (int i = 0; i <= 10; i++) {
+        int logMessage = 0;
         while (true) {
 
-            Trade t = m.getEvent();
+            //
+            // Core Loop
+            //
 
-            TradeAvro td = new TradeAvro(t.symbol(), t.price(), t.buySell(), t.quantity());
+            Trade t = m.getEvent(); // Get a new event from the market
+
+            TradeAvro td = new TradeAvro(t.symbol(), t.price(), t.buySell(), t.quantity()); // Generate a new Avro
+                                                                                            // object with
+                                                                                            // object with the data from
+                                                                                            // the market object
             logger.debug("Avro Record: " + td);
-            ProducerRecord<String, Object> record = new ProducerRecord<>(tradeTopicName, t.symbol(), td);
-            producer.send(record);
+
+            ProducerRecord<String, Object> record = new ProducerRecord<>(tradeTopicName, t.symbol(), td); // Create new Producer Record
+                                                                            // This is the object to be sent to kafka with its 3 properties
+                                                                            // 1. the topic to push to
+                                                                            // 2. the key for the message
+                                                                            // 3. the body of the message
+
+            producer.send(record); // Add the record to the producer buffer which will then
+
+            logMessage++;
+            if (logMessage % rate == 0) {
+                logger.warn("Produced " + logMessage + " records.");
+            }
         }
     }
 
@@ -95,8 +118,7 @@ public class App implements Callable<Integer> {
         for (Stock s : m.stocks) {
             Position p = s.getInitialPosition();
             PositionAvro pa = new PositionAvro(p.symbol(), p.lastTradePrice(), p.position(), p.lastTradeTime());
-            ProducerRecord<String, Object> record = new ProducerRecord<String, Object>(positionTopicName, p.symbol(),
-                    pa);
+            ProducerRecord<String, Object> record = new ProducerRecord<String, Object>(positionTopicName, p.symbol(), pa);
             producer.send(record);
         }
     }

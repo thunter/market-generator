@@ -1,5 +1,7 @@
 package com.whipitupitude.generator;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -17,6 +19,8 @@ public class Stock {
     BrownianMotion bSeq;
     public String symbol;
     Random rand = new Random(); // randomness for setup
+
+    private DateTimeFormatter dateFmt = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
     private double generateNewMu() {
         return this.muNormal.nextDouble();
@@ -70,7 +74,7 @@ public class Stock {
 
         int position = rand.nextInt(1, 10000);
 
-        long lastTradeTime = System.currentTimeMillis(); // default to now
+        String lastTradeTime = dateFmt.format(LocalDateTime.now());
         return new Position(symbol, lastTradePrice, position, lastTradeTime);
     }
 
@@ -78,26 +82,18 @@ public class Stock {
 
 /*
  * 
- * double s0 = 4;
- * double mu = generateNewMu(randNormal);
- * double sigma = 0.89;
- * int d = 50;
- * BrownianMotion bSeq = new BrownianMotion(s0, mu, sigma, stream);
- * bSeq.setObservationTimes(.5, d);
- * // BrownianMotion bSeq2 = new BrownianMotion(s0, .9, sigma, stream);
- * // bSeq2.setObservationTimes(0.2, d);
- * for (int i = 0; i <= periods; i++) {
- * if (bSeq.getCurrentObservationIndex() == bSeq.getNumObservationTimes()) {
- * // reset sequence
+ * double s0 = 4; double mu = generateNewMu(randNormal); double sigma = 0.89;
+ * int d = 50; BrownianMotion bSeq = new BrownianMotion(s0, mu, sigma, stream);
+ * bSeq.setObservationTimes(.5, d); // BrownianMotion bSeq2 = new
+ * BrownianMotion(s0, .9, sigma, stream); // bSeq2.setObservationTimes(0.2, d);
+ * for (int i = 0; i <= periods; i++) { if (bSeq.getCurrentObservationIndex() ==
+ * bSeq.getNumObservationTimes()) { // reset sequence
  * bSeq.setParams(bSeq.getCurrentObservation(), generateNewMu(randNormal), .3);
- * bSeq.resetStartProcess();
- * }
- * // System.out.println(bSeq.getCurrentObservationIndex() + "-" +
- * // bSeq.getNumObservationTimes());
- * System.out.println(
- * i + "," + bSeq.getCurrentObservationIndex() + "," + bSeq.nextObservation() +
- * ","
- * + bSeq.hasNextObservation());
+ * bSeq.resetStartProcess(); } //
+ * System.out.println(bSeq.getCurrentObservationIndex() + "-" + //
+ * bSeq.getNumObservationTimes()); System.out.println( i + "," +
+ * bSeq.getCurrentObservationIndex() + "," + bSeq.nextObservation() + "," +
+ * bSeq.hasNextObservation());
  * 
  * }
  */
